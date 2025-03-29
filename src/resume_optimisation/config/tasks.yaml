@@ -1,0 +1,154 @@
+resume_analysis:
+  description: >
+    Analyze and extract key information from the provided resume content. Extract the following sections:
+    - Summary/objective statement
+    - Professional experience with key achievements
+    - Educational background and degrees
+    - Technical and soft skills
+    - Notable projects
+    - Professional certifications
+    - Research publications
+    - Awards received
+    - Professional activities/memberships
+    - Personal interests
+
+    Resume content to analyze:
+    {resume_content}
+
+  expected_output: >
+    A comprehensive structured analysis of the resume with:
+    - All key sections identified and extracted
+    - Most relevant information highlighted per section
+    - Clear organization and formatting
+    - Focus on achievements and qualifications
+
+  agent: resume_analyzer
+
+job_description_analysis:
+  description: >
+    Analyze and extract key information from the provided job description content. Extract the following sections:
+    - Job title and description
+    - Key requirements and responsibilities
+    - Preferred qualifications and skills
+    - Preferred experience and education
+    - Preferred certifications and licenses
+    - Preferred projects and achievements
+    - Preferred activities and memberships
+    - Preferred interests and hobbies
+    - Preferred references
+    - Preferred summary and objective
+
+    Job description content to analyze:
+    {job_description_content}
+
+  expected_output: >
+    A comprehensive structured analysis of the job description with:
+    - All key sections identified and extracted
+    - Most relevant information highlighted per section
+    - Clear organization and formatting
+    - Focus on requirements and qualifications
+
+  agent: job_description_analyzer
+
+validate_resume:
+  description: >
+    Perform a comprehensive semantic analysis comparing resume against job description requirements:
+
+    1. Skill Match Analysis (40% of total score):
+       - Direct Technical Matches (25%):
+         * Exact skill name matches
+         * Same technology/tool matches
+         * Version-specific matches
+       - Semantic Matches (15%):
+         * Similar/related technologies
+         * Transferable skills
+         * Domain knowledge overlap
+       For each match, provide:
+         * Match confidence percentage
+         * Relationship explanation
+         * Relevance to role
+
+    2. Experience Quality Analysis (35% of total score):
+       - Role Relevance (20%):
+         * Similar job titles
+         * Matching responsibilities
+         * Industry alignment
+       - Project Impact (15%):
+         * Scale of projects
+         * Technologies used
+         * Measurable outcomes
+       Provide detailed scoring rationale for each aspect
+
+    3. Qualification Alignment (25% of total score):
+       - Education Match (10%):
+         * Degree relevance
+         * Field of study alignment
+         * Additional certifications
+       - Professional Development (15%):
+         * Relevant training
+         * Industry certifications
+         * Continuous learning evidence
+
+    4. Detailed Gap Analysis:
+       For each identified gap:
+       - Criticality Level:
+         * Critical (must-have skills)
+         * Important (strongly preferred)
+         * Nice-to-have
+       - Gap Assessment:
+         * Current proficiency level
+         * Required proficiency level
+         * Learning complexity
+       - Development Path:
+         * Prerequisites needed
+         * Learning resources
+         * Estimated timeline
+
+    5. Final Score Calculation:
+       - Weighted score from all categories
+       - Individual component breakdowns
+       - Detailed justification for each score
+       - Clear recommendations for improvement
+
+    Use semantic analysis to ensure accurate matching of similar but differently worded skills and experiences.
+  
+  expected_output: >
+    A detailed matching analysis including:
+    - Complete skill mapping with match percentages
+    - Experience relevance scores with evidence
+    - Qualification alignment details
+    - Component-wise score breakdown
+    - Overall match percentage
+    - Prioritized gap analysis
+    - Specific improvement recommendations
+    - Supporting evidence for all scores
+  
+  agent: resume_validator
+
+
+
+course_recommendation:
+  description: >
+    Search and recommend courses to address skill gaps between the candidate's resume and job requirements:
+    - Analyze the resume and job description to identify key skill gaps
+    - Search for relevant courses across major online learning platforms
+    - For each identified skill gap:
+      - Find and evaluate available courses
+      - Select up to 2 best courses based on quality, reviews and learning outcomes
+      - Scrape detailed course information including name, description and link
+    - Focus on courses that directly address the missing skills
+    - Prioritize courses with hands-on practice and real-world applications
+    - Consider instructor expertise and course structure in recommendations
+
+  expected_output: >
+    A curated list of recommended courses with:
+    - Clear mapping of courses to identified skill gaps
+    - Maximum 2 high-quality courses per skill gap
+    - Detailed course information including:
+      - Course name and provider
+      - Course description and learning outcomes  
+      - Direct link to enroll
+      - Instructor details
+    - Justification for why each course was selected
+
+  agent: course_recommender

@@ -1,0 +1,23 @@
+[project]
+name = "resume_optimisation"
+version = "0.1.0"
+description = "resume_optimisation using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.108.0,<1.0.0"
+]
+
+[project.scripts]
+resume_optimisation = "resume_optimisation.main:run"
+run_crew = "resume_optimisation.main:run"
+train = "resume_optimisation.main:train"
+replay = "resume_optimisation.main:replay"
+test = "resume_optimisation.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
