@@ -50,82 +50,90 @@ job_description_analysis:
 
   agent: job_description_analyzer
 
+
 validate_resume:
   description: >
-    Perform a comprehensive semantic analysis comparing resume against job description requirements:
+    Perform a comprehensive semantic analysis comparing resume against job description requirements.
+    Using the following weights for evaluation: {weights_context}
 
-    1. Skill Match Analysis (40% of total score):
-       - Direct Technical Matches (25%):
-         * Exact skill name matches
-         * Same technology/tool matches
-         * Version-specific matches
-       - Semantic Matches (15%):
-         * Similar/related technologies
-         * Transferable skills
-         * Domain knowledge overlap
-       For each match, provide:
-         * Match confidence percentage
-         * Relationship explanation
-         * Relevance to role
+    1. Skills Analysis ({skill_match_weight}% of total score):
+       - Direct Technical Skills (60%):
+         * Programming languages
+         * Tools and frameworks
+         * Technical competencies
+         * Relevant experience
+         * Semantic matches
+       - Soft Skills (40%):
+         * Communication
+         * Leadership
+         * Problem-solving
 
-    2. Experience Quality Analysis (35% of total score):
-       - Role Relevance (20%):
-         * Similar job titles
-         * Matching responsibilities
-         * Industry alignment
-       - Project Impact (15%):
-         * Scale of projects
-         * Technologies used
-         * Measurable outcomes
-       Provide detailed scoring rationale for each aspect
+    2. Experience Analysis ({experience_weight}% of total score):
+       - Years of Experience (40%):
+         * Total years
+         * Relevant years
+       - Role Relevance (60%):
+         * Job title matches
+         * Responsibility alignment
+         * Industry experience
 
-    3. Qualification Alignment (25% of total score):
-       - Education Match (10%):
-         * Degree relevance
-         * Field of study alignment
-         * Additional certifications
-       - Professional Development (15%):
-         * Relevant training
-         * Industry certifications
-         * Continuous learning evidence
+    3. Education Analysis ({education_weight}% of total score):
+       - Degree Level (50%):
+         * Required education met
+         * Advanced degrees
+       - Field Relevance (50%):
+         * Major alignment
+         * Specialization match
 
-    4. Detailed Gap Analysis:
-       For each identified gap:
-       - Criticality Level:
-         * Critical (must-have skills)
-         * Important (strongly preferred)
-         * Nice-to-have
-       - Gap Assessment:
-         * Current proficiency level
-         * Required proficiency level
-         * Learning complexity
-       - Development Path:
-         * Prerequisites needed
-         * Learning resources
-         * Estimated timeline
+    4. Certifications ({certifications_weight}% of total score):
+       - Required certifications
+       - Additional relevant certifications
+       - Professional licenses
 
-    5. Final Score Calculation:
-       - Weighted score from all categories
-       - Individual component breakdowns
-       - Detailed justification for each score
-       - Clear recommendations for improvement
+    5. Achievements ({achievements_weight}% of total score):
+       - Professional awards
+       - Recognition
+       - Measurable impacts
 
-    Use semantic analysis to ensure accurate matching of similar but differently worded skills and experiences.
-  
+    6. Projects ({projects_weight}% of total score):
+       - Relevant projects
+       - Project scale
+       - Technical complexity
+
+    7. Location ({location_weight}% of total score):
+       - Geographic match
+       - Relocation flexibility
+       - Remote work capability
+
+    8. Industry Knowledge ({industry_weight}% of total score):
+       - Domain expertise
+       - Market understanding
+       - Industry trends
+
+    9. Professional Activities ({professional_activities_weight}% of total score):
+       - Industry memberships
+       - Conferences
+       - Community involvement
+
+    10. Publications ({publications_weight}% of total score):
+        - Research papers
+        - Technical articles
+        - Industry contributions
+
+    Final Score Calculation:
+    - Each category will be scored based on its assigned weight
+    - Detailed scoring breakdown will be provided
+    - Areas for improvement will be identified
+
   expected_output: >
     A detailed matching analysis including:
-    - Complete skill mapping with match percentages
-    - Experience relevance scores with evidence
-    - Qualification alignment details
-    - Component-wise score breakdown
+    - Weighted score for each category
     - Overall match percentage
-    - Prioritized gap analysis
-    - Specific improvement recommendations
+    - Specific strengths and gaps
+    - Improvement recommendations
     - Supporting evidence for all scores
   
   agent: resume_validator
-
-
 
 course_recommendation:
   description: >

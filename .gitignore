@@ -6,5 +6,4 @@ output/
 *.json
 *.docx
 *.doc
-*.md
 .venv/
